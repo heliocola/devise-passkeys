@@ -13,6 +13,10 @@ module Devise
       # @param passkey [String] the passkey that was used for authentication
       def after_passkey_authentication(passkey:); end
 
+      # By default, the passkey name will be the first Devise authentication key, to keep
+      # backward compatibility, but allow users to override this behavior
+      # @example
+      #  :email
       def default_passkey_name
         self.class.authentication_keys.first
       end
