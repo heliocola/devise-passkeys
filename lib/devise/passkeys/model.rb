@@ -12,6 +12,10 @@ module Devise
       # (such as notifying the user of a new login).
       # @param passkey [String] the passkey that was used for authentication
       def after_passkey_authentication(passkey:); end
+
+      def default_passkey_name
+        self.class.authentication_keys.first
+      end
     end
   end
 end
