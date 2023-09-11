@@ -9,6 +9,8 @@ class Devise::TestPasskeyIssuer < ActiveSupport::TestCase
   test "create_and_return_passkey" do
     user = User.create!(email: "test@test.com")
 
+    assert_equal :email, user.default_passkey_name
+
     relying_party = example_relying_party
     client = fake_client(origin: relying_party.origin)
     credential = create_raw_credential(credential_hash: client.create, relying_party: relying_party)
